@@ -2,7 +2,8 @@ package CreateList;
 public class ListCreate {
    public   Node head;
    public   Node tail;
-   public Node insertNode(Node myinode){
+   int size;
+   public void insertNode(Node myinode){
        if(head==null){
            head=myinode;
            tail = myinode;
@@ -11,7 +12,27 @@ public class ListCreate {
            tail.next=myinode;
            tail =myinode;
        }
-       return head;
+       size++;
+
+   }
+   public  void insertNodeInMiddle(Node newNode){
+       if(head==null){
+           head =newNode;
+           tail=newNode;
+       }
+       else {
+           INode temp,current;
+           int count =(size%2==0 )?( size/2) :((size+1)/2);
+           temp =head;
+           current=head;
+           for(int index=0; index<count;index++){
+               current=temp;
+               temp=temp.getNext();
+           }
+           current.setNext(newNode);
+           newNode.setNext(temp);
+       }
+       size++;
    }
    public  void display(){
        INode current =head;
