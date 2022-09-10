@@ -1,26 +1,28 @@
 package CreateList;
 
-public class Node<T> {
+public class Node<T> implements INode<T>{
     T data;
-    Node nextNode;
-    Node(){
+    INode next;
+   public Node(){
     }
     public Node(T data){
         this.data =data;
-        this.nextNode=null;
+        this.next=null;
     }
+    @Override
     public T getData() {
         return data;
     }
+    @Override
     public void setData(T data) {
         this.data = data;
     }
-
-    public Node getNextNode() {
-        return nextNode;
+  @Override
+    public INode<T> getNext() {
+        return next;
     }
-
-    public void setNextNode(Node nextNode) {
-        this.nextNode = nextNode;
+    @Override
+    public void setNext(INode<T> next) {
+        this.next = next;
     }
 }
