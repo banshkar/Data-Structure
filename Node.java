@@ -16,7 +16,7 @@ public class Node<T> implements INode<T>{
     public void setData(T data) {
         this.data = data;
     }
-  @Override
+   @Override
     public INode<T> getNext() {
         return next;
     }
