@@ -1,38 +1,30 @@
 package CreateList;
 public class ListCreate {
-   public   Node head;
-   public   Node tail;
+   public   INode head;
+   public   INode tail;
    int size;
-   public void insertNode(Node myinode){
+   public void insertNodeInBeginning(INode myinode){
        if(head==null){
            head=myinode;
            tail = myinode;
        }
        else {
-           tail.next=myinode;
-           tail =myinode;
+           INode temp =head;
+           head=myinode;
+           head.setNext(temp);
        }
        size++;
 
    }
-   public  void insertNodeInMiddle(Node newNode){
+
+   public  void deleteNodeFromBeginning(){
        if(head==null){
-           head =newNode;
-           tail=newNode;
+           System.out.println("List is Empty");
        }
        else {
-           INode temp,current;
-           int count =(size%2==0 )?( size/2) :((size+1)/2);
-           temp =head;
-           current=head;
-           for(int index=0; index<count;index++){
-               current=temp;
-               temp=temp.getNext();
-           }
-           current.setNext(newNode);
-           newNode.setNext(temp);
+           head = head.getNext();
        }
-       size++;
+       size--;
    }
    public  void display(){
        INode current =head;
@@ -41,8 +33,14 @@ public class ListCreate {
            return;
        }
            while (current!=null){
-               System.out.println(current.getData());
-               current=current.getNext();
+              if(current.getNext()!=null){
+                  System.out.print(current.getData()+"->");
+                  current=current.getNext();
+              }
+              else {
+                  System.out.println(current.getData());
+                  current =current.getNext();
+              }
        }
    }
 }
