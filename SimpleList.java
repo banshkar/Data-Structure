@@ -9,6 +9,6 @@ public class SimpleList {
         head =list.insertNode(firstNode);
         head =list.insertNode(secondNode);
         head =list.insertNode(thirdNode);
-        list.display(head);
+        list.display();
     }
 }

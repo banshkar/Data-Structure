@@ -1,19 +1,27 @@
 package CreateList;
 public class ListCreate {
-   private  INode head;
-   public INode insertNode(INode myinode){
+   public   Node head;
+   public   Node tail;
+   public Node insertNode(Node myinode){
        if(head==null){
            head=myinode;
+           tail = myinode;
        }
        else {
-           INode temp = head;
-           head = myinode;
-           head.setNext(temp);
+           tail.next=myinode;
+           tail =myinode;
        }
        return head;
    }
-   public  void display(INode head){
-           System.out.println(head.getData());
+   public  void display(){
+       INode current =head;
+       if(head==null){
+           System.out.println("List Empty");
+           return;
+       }
+           while (current!=null){
+               System.out.println(current.getData());
+               current=current.getNext();
+       }
    }
-
 }

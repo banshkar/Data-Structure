@@ -1,5 +1,4 @@
 package CreateList;
-
 public class Node<T> implements INode<T>{
     T data;
     INode next;
