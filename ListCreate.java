@@ -33,6 +33,25 @@ public class ListCreate {
         }
         size++;
     }
+    public  void andAtindex(int position,INode myNode){
+        if(position==0){
+            insertNodeInBeginning(myNode);
+        } else if (position==-1){
+            System.out.println("This Data not Found");
+        } else {
+            INode temp;
+            INode current;
+            temp =head;
+            current=null;
+            for (int index = 1; index <=position; index++) {
+                current = temp;
+                temp = temp.getNext();
+            }
+            current.setNext(myNode);
+            myNode.setNext(temp);
+        }
+        size++;
+    }
     public void insertNodeAtEnd(INode myNode) {
         if(head==null) {
             head = myNode;
@@ -62,23 +81,34 @@ public class ListCreate {
                 currentNode.setNext(null);
         }
     }
-    public  void searchNode(INode myNode){
-        if (head==null){
-            System.out.println("list is Empty");
+    public  int searchNode(INode myNode){
+        INode currentNode =head;
+        int position=0;
+        boolean found =false;
+        if(head==null){
+            System.out.println("list empty");
         }
         else {
-            INode currentNode =head;
-            int position=0;
             while (currentNode!=null){
-                position++;
                 if(currentNode.getData().equals(myNode.getData())){
-                System.out.println("your serach Node at postion "+position+" -> "+currentNode.getData());
+                    found=true;
+                    break;
                 }
-                currentNode= currentNode.getNext();
-               }
+                position++;
+                currentNode=currentNode.getNext();
+            }
+        }
+        if(found){
+            return position;
+        }
+        else {
+            return -1;
         }
     }
-
+public void SearchAndPosition(INode searchValue,INode insertValue){
+        int position =searchNode(searchValue);
+        andAtindex(position,insertValue);
+}
     public void display () {
             INode current = head;
             if (head == null) {
@@ -94,7 +124,6 @@ public class ListCreate {
                     System.out.println(current.getData());
                     current = current.getNext();
                 }
-
             }
         }
     }
