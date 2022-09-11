@@ -3,7 +3,6 @@ public class ListCreate {
      INode head;
      INode tail;
     int size;
-
     public void insertNodeInBeginning(INode myNode) {
         if (head == null) {
             head = myNode;
@@ -13,6 +12,7 @@ public class ListCreate {
             head = myNode;
             head.setNext(temp);
         }
+        size++;
     }
     public void InsertNodeMiddle(INode myNode) {
         if (head == null) {
@@ -81,6 +81,28 @@ public class ListCreate {
                 currentNode.setNext(null);
         }
     }
+    public  void deletedNodeByPosition(INode myNode){
+        if (head == null) {
+            System.out.println("list is Empty");
+        }
+        else {
+            INode currentNode =head;
+            INode previewNode =null;
+            while (currentNode!=null) {
+                if (currentNode.getData().equals(myNode.getData())) {
+                    if (previewNode == null) {
+                        head = currentNode.getNext();
+                    } else {
+                        previewNode.setNext(currentNode.getNext());
+                    }
+                    break;
+                }
+                previewNode = currentNode;
+                currentNode = currentNode.getNext();
+            }
+        }
+        size--;
+    }
     public  int searchNode(INode myNode){
         INode currentNode =head;
         int position=0;
@@ -125,5 +147,7 @@ public void SearchAndPosition(INode searchValue,INode insertValue){
                     current = current.getNext();
                 }
             }
+        System.out.println();
+        System.out.println("size of list :" +size);
         }
     }

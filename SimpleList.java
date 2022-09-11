@@ -10,8 +10,9 @@ public class SimpleList {
         list.insertNodeInBeginning(firstNode);
         list.insertNodeAtEnd(secondNode);
         list.InsertNodeMiddle(thirdNode);
+        list.insertNodeInBeginning(thirdNode2);
         list.display();
-        list.SearchAndPosition(thirdNode2,thirdNode3);
+        list.deletedNodeByPosition(secondNode);
         list.display();
     }
 }
