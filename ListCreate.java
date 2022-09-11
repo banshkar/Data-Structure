@@ -62,7 +62,24 @@ public class ListCreate {
                 currentNode.setNext(null);
         }
     }
-        public void display () {
+    public  void searchNode(INode myNode){
+        if (head==null){
+            System.out.println("list is Empty");
+        }
+        else {
+            INode currentNode =head;
+            int position=0;
+            while (currentNode!=null){
+                position++;
+                if(currentNode.getData().equals(myNode.getData())){
+                System.out.println("your serach Node at postion "+position+" -> "+currentNode.getData());
+                }
+                currentNode= currentNode.getNext();
+               }
+        }
+    }
+
+    public void display () {
             INode current = head;
             if (head == null) {
                 System.out.println("List Empty");
@@ -72,10 +89,12 @@ public class ListCreate {
                 if (current.getNext() != null) {
                     System.out.print(current.getData() + "->");
                     current = current.getNext();
-                } else {
+                }
+                else {
                     System.out.println(current.getData());
                     current = current.getNext();
                 }
+
             }
         }
     }
