@@ -1,4 +1,5 @@
 package CreateList;
+
 public class ListCreate {
      INode head;
      INode tail;
@@ -127,6 +128,21 @@ public class ListCreate {
             return -1;
         }
     }
+    public  void sortedList(Integer element){
+         Node new_node =new Node<>(element);
+         INode current;
+        if(head==null || (Integer)head.getData()>=(Integer) new_node.getData()){
+            head=new_node;
+        }
+        else {
+              current=head;
+            while (current.getNext() != null && (Integer) current.getNext().getData() < (Integer) new_node.getData()) {
+                   current=current.getNext();
+                   new_node.next =current.getNext();
+            }
+            current.setNext(new_node);
+            }
+        }
 public void SearchAndPosition(INode searchValue,INode insertValue){
         int position =searchNode(searchValue);
         andAtindex(position,insertValue);
